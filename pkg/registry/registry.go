@@ -94,6 +94,9 @@ func (c *RegistryClient) GetPackage(name string) (*PackageMetadata, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusNotFound {
+			return nil, fmt.Errorf("package '%s' does not exist on the npm registry. Please enter a valid package name", name)
+		}
 		return nil, fmt.Errorf("registry returned status: %d", resp.StatusCode)
 	}
 

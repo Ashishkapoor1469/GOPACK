@@ -122,31 +122,37 @@ func runInteractiveCLI() {
 
 		// Handle ANSI Escape Sequences (Arrows, etc.)
 		if r == '\x1b' {
-			// Peek next bytes to see if it's an arrow key
-			nextBytes := make([]byte, 2)
-			n, _ := os.Stdin.Read(nextBytes)
-			if n == 2 && nextBytes[0] == '[' {
-				switch nextBytes[1] {
+			// Peek next bytes inside buffered reader to see if it's an arrow key sequence (e.g. \x1b[A or \x1b[B)
+			peekBytes, err := reader.Peek(2)
+			if err == nil && len(peekBytes) == 2 && peekBytes[0] == '[' {
+				// We consume the Peeked [ and A/B/C/D bytes
+				_, _ = reader.Discard(2)
+
+				switch peekBytes[1] {
 				case 'A': // Arrow Up
 					if menuOpen {
 						filtered := filterMenu(buffer)
-						if selectedMenuIdx > 0 {
-							selectedMenuIdx--
-						} else {
-							selectedMenuIdx = len(filtered) - 1
+						if len(filtered) > 0 {
+							if selectedMenuIdx > 0 {
+								selectedMenuIdx--
+							} else {
+								selectedMenuIdx = len(filtered) - 1
+							}
+							render()
 						}
-						render()
 					}
 					continue
 				case 'B': // Arrow Down
 					if menuOpen {
 						filtered := filterMenu(buffer)
-						if selectedMenuIdx < len(filtered)-1 {
-							selectedMenuIdx++
-						} else {
-							selectedMenuIdx = 0
+						if len(filtered) > 0 {
+							if selectedMenuIdx < len(filtered)-1 {
+								selectedMenuIdx++
+							} else {
+								selectedMenuIdx = 0
+							}
+							render()
 						}
-						render()
 					}
 					continue
 				}
@@ -306,7 +312,8 @@ func printBanner() {
   \033[38;5;141mGoPack CLI v2.0.0\033[0m · registry: \033[36mregistry.npmjs.org\033[0m · store: \033[36m~/.gopack/store\033[0m
   Type a package name to install it (e.g. \033[36mlodash\033[0m) or type \033[35m/\033[0m to see suggestions.
 `
-	// Unquote backtick strings if needed or output directly
+	// Resolve literal color escape codes inside raw string backticks
+	banner = strings.ReplaceAll(banner, "\\033", "\x1b")
 	fmt.Println(banner)
 }
 
