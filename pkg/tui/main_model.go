@@ -73,6 +73,17 @@ func NewTUIModel(cfg *config.Config, auditor *audit.Auditor) TUIModel {
 		"Remix", "Nuxt 3", "Angular", "Solid.js", "Qwik", "Expo", "Electron", "Tauri",
 	}
 
+	popularPkgs := []registry.SearchPackageInfo{
+		{Name: "lodash", Version: "4.17.21", Description: "Lodash modular utilities.", WeeklyDownloads: 48000000},
+		{Name: "chalk", Version: "5.3.0", Description: "Terminal string styling done right", WeeklyDownloads: 42000000},
+		{Name: "express", Version: "4.19.2", Description: "Fast, unopinionated, minimalist web framework", WeeklyDownloads: 35000000},
+		{Name: "react", Version: "18.3.1", Description: "React is a JavaScript library for building user interfaces.", WeeklyDownloads: 28000000},
+		{Name: "redis", Version: "4.6.13", Description: "Modern, high performance Redis client", WeeklyDownloads: 15000000},
+		{Name: "axios", Version: "1.6.8", Description: "Promise based HTTP client for the browser and node.js", WeeklyDownloads: 32000000},
+		{Name: "typescript", Version: "5.4.5", Description: "TypeScript is a language for application-scale JavaScript.", WeeklyDownloads: 45000000},
+		{Name: "commander", Version: "12.0.0", Description: "node.js command-line interfaces made easy", WeeklyDownloads: 25000000},
+	}
+
 	return TUIModel{
 		cfg:          cfg,
 		client:       registry.NewRegistryClient(),
@@ -81,6 +92,7 @@ func NewTUIModel(cfg *config.Config, auditor *audit.Auditor) TUIModel {
 		inputs:       [2]textinput.Model{fwInput, pkgInput},
 		frameworks:   fws,
 		filteredFws:  fws,
+		pkgResults:   popularPkgs,
 		selectedPkgs: make(map[string]bool),
 	}
 }
@@ -258,10 +270,25 @@ func (m *TUIModel) filterList() {
 }
 
 func (m TUIModel) searchRegistry(query string) tea.Cmd {
-	return tea.Tick(300*time.Millisecond, func(time.Time) tea.Msg {
+	if query == "" {
+		popularPkgs := []registry.SearchPackageInfo{
+			{Name: "lodash", Version: "4.17.21", Description: "Lodash modular utilities.", WeeklyDownloads: 48000000},
+			{Name: "chalk", Version: "5.3.0", Description: "Terminal string styling done right", WeeklyDownloads: 42000000},
+			{Name: "express", Version: "4.19.2", Description: "Fast, unopinionated, minimalist web framework", WeeklyDownloads: 35000000},
+			{Name: "react", Version: "18.3.1", Description: "React is a JavaScript library for building user interfaces.", WeeklyDownloads: 28000000},
+			{Name: "redis", Version: "4.6.13", Description: "Modern, high performance Redis client", WeeklyDownloads: 15000000},
+			{Name: "axios", Version: "1.6.8", Description: "Promise based HTTP client for the browser and node.js", WeeklyDownloads: 32000000},
+			{Name: "typescript", Version: "5.4.5", Description: "TypeScript is a language for application-scale JavaScript.", WeeklyDownloads: 45000000},
+			{Name: "commander", Version: "12.0.0", Description: "node.js command-line interfaces made easy", WeeklyDownloads: 25000000},
+		}
+		return func() tea.Msg {
+			return searchFinishedMsg{results: popularPkgs, err: nil}
+		}
+	}
+	return func() tea.Msg {
 		results, err := m.client.SearchPackages(query, 20)
 		return searchFinishedMsg{results: results, err: err}
-	})
+	}
 }
 
 func (m TUIModel) triggerInstall(pkgs []string) tea.Cmd {

@@ -41,7 +41,7 @@ var listCmd = &cobra.Command{
 
 		fmt.Println("Installed Dependencies:")
 		fmt.Printf("%-25s %-15s %s\n", "NAME", "VERSION", "SECURITY")
-		fmt.Println(string(make([]byte, 60))) // horizontal bar separator
+		fmt.Println("-------------------------------------------------------------") // horizontal bar separator
 		for name, dep := range deps {
 			res, err := auditor.AuditPackage(name, dep.Version, offline)
 			badge := "\033[32m● safe\033[0m"

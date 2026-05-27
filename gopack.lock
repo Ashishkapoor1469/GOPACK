@@ -1,10 +1,45 @@
 {
   "lockfileVersion": 1,
   "dependencies": {
+    "@redis/bloom": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/@redis/bloom/-/bloom-5.12.1.tgz",
+      "integrity": "sha512-PUUfv+ms7jgPSBVoo/DN4AkPHj4D5TZSd6SbJX7egzBplkYUcKmHRE8RKia7UtZ8bSQbLguLvxVO+asKtQfZWA=="
+    },
+    "@redis/client": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/@redis/client/-/client-5.12.1.tgz",
+      "integrity": "sha512-7aPGWeqA3uFm43o19umzdl16CEjK/JQGtSXVPevplTaOU3VJA/rseBC1QvYUz9lLDIMBimc4SW/zrW4S89BaCA=="
+    },
+    "@redis/json": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/@redis/json/-/json-5.12.1.tgz",
+      "integrity": "sha512-eOze75esLve4vfqDel7aMX08CNaiLLQS2fV8mpRN9NxPe1rVR4vQyYiW/OgtGUysF6QOr9ANhfxABKNOJfXdKg=="
+    },
+    "@redis/search": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/@redis/search/-/search-5.12.1.tgz",
+      "integrity": "sha512-ItlxbxC9cKI6IU1TLWoczwJCRb6TdmkEpWv05UrPawqaAnWGRu3rcIqsc5vN483T2fSociuyV1UkWIL5I4//2w=="
+    },
+    "@redis/time-series": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/@redis/time-series/-/time-series-5.12.1.tgz",
+      "integrity": "sha512-c6JL6E3EcZJuNqKFz+KM+l9l5mpcQiKvTwgA3blt5glWJ8hjDk0yeHN3beE/MpqYIQ8UEX44ItQzgkE/gCBELQ=="
+    },
     "chalk": {
       "version": "5.6.2",
       "resolved": "https://registry.npmjs.org/chalk/-/chalk-5.6.2.tgz",
       "integrity": "sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA=="
+    },
+    "cluster-key-slot": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/cluster-key-slot/-/cluster-key-slot-1.1.2.tgz",
+      "integrity": "sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA=="
+    },
+    "redis": {
+      "version": "5.12.1",
+      "resolved": "https://registry.npmjs.org/redis/-/redis-5.12.1.tgz",
+      "integrity": "sha512-LDsoVvb/CpoV9EN3FXvgvSHNJWuCIzl9MiO3ppOevuGLpSGJhwfQjpEwfFJcQvNSddHADDdZaWx0HnmMxRXG7g=="
     }
   }
 }

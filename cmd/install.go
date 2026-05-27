@@ -12,6 +12,7 @@ import (
 
 var (
 	envProfile string
+	saveDev    bool
 	frozen     bool
 )
 
@@ -30,7 +31,7 @@ var installCmd = &cobra.Command{
 
 		mgr := installer.NewInstallManager(cfg)
 
-		isDev := envProfile == "dev"
+		isDev := saveDev || envProfile == "dev"
 		
 		fmt.Printf("GoPack: Resolving and installing packages...\n")
 		err = mgr.Install(args, isDev)
@@ -44,6 +45,7 @@ var installCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(installCmd)
-	installCmd.Flags().StringVar(&envProfile, "env", "dev", "Install environment profile (dev/production)")
+	installCmd.Flags().StringVar(&envProfile, "env", "production", "Install environment profile (dev/production)")
+	installCmd.Flags().BoolVarP(&saveDev, "save-dev", "D", false, "Save package to devDependencies")
 	installCmd.Flags().BoolVar(&frozen, "frozen", false, "Refuse to change lockfile; fail if it would change")
 }
