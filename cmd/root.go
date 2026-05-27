@@ -33,7 +33,7 @@ var RootCmd = &cobra.Command{
 				return
 			}
 		}
-		runTUI(false)
+		runInteractiveCLI()
 	},
 }
 

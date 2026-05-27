@@ -313,8 +313,8 @@ func (m TUIModel) View() string {
 
 	// Custom styles
 	borderStyle := lipgloss.NewStyle().Border(lipgloss.RoundedBorder()).BorderForeground(purple).Padding(1, 2)
-	activeTabStyle := lipgloss.NewStyle().Border(lipgloss.NormalBorder(), false, false, true, false).BorderForeground(purple).Foreground(purple).Bold(true).Padding(0, 1)
-	inactiveTabStyle := lipgloss.NewStyle().Foreground(gray).Padding(0, 1)
+	activeTabStyle := lipgloss.NewStyle().Foreground(purple).Bold(true).Underline(true)
+	inactiveTabStyle := lipgloss.NewStyle().Foreground(gray)
 	titleStyle := lipgloss.NewStyle().Foreground(gray).Italic(true)
 	
 	// Direct mode rendering
@@ -348,12 +348,12 @@ func (m TUIModel) View() string {
 	view.WriteString(titleStyle.Render(fmt.Sprintf("gopack v2.0.0  ·  registry: %s  ·  store: %s  ·  offline-ready\n\n", "registry.npmjs.org", "~/.gopack/store")))
 
 	// Side-by-side search panels
-	fwTitle := inactiveTabStyle.Render("FRAMEWORK")
-	pkgTitle := inactiveTabStyle.Render("PACKAGES")
+	fwTitle := "  " + inactiveTabStyle.Render("FRAMEWORK") + "  "
+	pkgTitle := "  " + inactiveTabStyle.Render("PACKAGES") + "  "
 	if m.activeTab == tabFramework {
-		fwTitle = activeTabStyle.Render("FRAMEWORK")
+		fwTitle = "  " + activeTabStyle.Render("FRAMEWORK") + "  "
 	} else {
-		pkgTitle = activeTabStyle.Render("PACKAGES")
+		pkgTitle = "  " + activeTabStyle.Render("PACKAGES") + "  "
 	}
 
 	// Render Search Boxes
@@ -375,7 +375,7 @@ func (m TUIModel) View() string {
 	view.WriteString(searchPanels + "\n\n")
 
 	// Results Header
-	view.WriteString(lipgloss.NewStyle().Foreground(gray).Render("RESULTS · Space=select · Enter=install\n"))
+	view.WriteString(lipgloss.NewStyle().Foreground(gray).Render("RESULTS · Space=select · Enter=install") + "\n")
 
 	// Results List
 	var resultsSb strings.Builder
