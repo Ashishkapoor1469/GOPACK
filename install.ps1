@@ -11,7 +11,7 @@ if (-not $goInstalled) {
 
 # Compile the binary
 Write-Host "Building GoPack executable..." -ForegroundColor Yellow
-go build -o gp.exe main.go
+go build -o gpack.exe main.go
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Build failed." -ForegroundColor Red
@@ -25,18 +25,18 @@ if (-not (Test-Path $goBin)) {
 }
 
 # Copy binary to go bin
-$targetPath = Join-Path $goBin "gp.exe"
+$targetPath = Join-Path $goBin "gpack.exe"
 if (Test-Path $targetPath) {
     Remove-Item $targetPath -Force
 }
-Move-Item -Path "gp.exe" -Destination $targetPath -Force
+Move-Item -Path "gpack.exe" -Destination $targetPath -Force
 
-Write-Host "Installed gp.exe to $targetPath" -ForegroundColor Green
+Write-Host "Installed gpack.exe to $targetPath" -ForegroundColor Green
 
 # Check if path is in environment
 $envPath = [Environment]::GetEnvironmentVariable("Path", "User")
 if (-not $envPath.Contains($goBin)) {
-    Write-Host "Warning: $goBin is not in your PATH. You might need to add it to use 'gp' anywhere." -ForegroundColor Yellow
+    Write-Host "Warning: $goBin is not in your PATH. You might need to add it to use 'gpack' anywhere." -ForegroundColor Yellow
 } else {
-    Write-Host "GoPack is ready! Type 'gp' to open the interactive TUI." -ForegroundColor Green
+    Write-Host "GoPack is ready! Type 'gpack' to open the interactive TUI." -ForegroundColor Green
 }

@@ -14,21 +14,21 @@ fi
 
 # Compile the binary
 echo -e "\033[33mBuilding GoPack executable...\033[0m"
-go build -o gp main.go
+go build -o gpack main.go
 
 # Ensure go bin exists
 GOBIN="${HOME}/go/bin"
 mkdir -p "$GOBIN"
 
 # Move binary
-mv gp "$GOBIN/gp"
+mv gpack "$GOBIN/gpack"
 
-echo -e "\033[32mInstalled gp to $GOBIN/gp\033[0m"
+echo -e "\033[32mInstalled gpack to $GOBIN/gpack\033[0m"
 
 # Check if in PATH
 if [[ ":$PATH:" != *":$GOBIN:"* ]]; then
     echo -e "\033[33mWarning: $GOBIN is not in your PATH. You might want to add it to your shell config (.bashrc or .zshrc):\033[0m"
     echo "export PATH=\$PATH:\$HOME/go/bin"
 else
-    echo -e "\033[32mGoPack is ready! Run 'gp' to start.\033[0m"
+    echo -e "\033[32mGoPack is ready! Run 'gpack' to start.\033[0m"
 fi

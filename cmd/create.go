@@ -90,7 +90,7 @@ var createCmd = &cobra.Command{
 		}
 
 		fmt.Printf("\033[32mSuccess: Project %s scaffolded successfully!\033[0m\n", projectName)
-		fmt.Printf("Run: cd %s && gp install\n", projectName)
+		fmt.Printf("Run: cd %s && gpack install\n", projectName)
 	},
 }
 

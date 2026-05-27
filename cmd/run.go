@@ -49,7 +49,7 @@ var runCmd = &cobra.Command{
 		}
 
 		if len(args) == 0 {
-			fmt.Println("Error: script name required. Run 'gp run --list' to see available scripts.")
+			fmt.Println("Error: script name required. Run 'gpack run --list' to see available scripts.")
 			os.Exit(1)
 		}
 

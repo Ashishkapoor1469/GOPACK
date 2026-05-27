@@ -73,7 +73,7 @@ var auditCmd = &cobra.Command{
 		}
 
 		if len(dependencies) == 0 {
-			fmt.Println("No packages to audit. Run 'gp install' first.")
+			fmt.Println("No packages to audit. Run 'gpack install' first.")
 			return
 		}
 

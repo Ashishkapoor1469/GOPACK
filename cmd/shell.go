@@ -76,7 +76,7 @@ func runInteractiveCLI() {
 		// 2. Print prompt line
 		// Move cursor to beginning of prompt line and clear it
 		fmt.Print("\r\033[K")
-		fmt.Printf("\033[38;5;141mgp > \033[0m%s", buffer)
+		fmt.Printf("\033[38;5;141mgpack > \033[0m%s", buffer)
 
 		// 3. Print menu if open
 		if menuOpen {
@@ -103,7 +103,7 @@ func runInteractiveCLI() {
 
 				// Move cursor back up to prompt line and position it at the end of the text
 				fmt.Printf("\033[%dA", lastMenuLinesCount)
-				fmt.Printf("\r\033[%dC", len("gp > ")+len(buffer))
+				fmt.Printf("\r\033[%dC", len("gpack > ")+len(buffer))
 			} else {
 				menuOpen = false
 			}
@@ -333,7 +333,7 @@ func runHealthCmd() {
 	mgr.LoadLockfile()
 
 	if len(mgr.Dependencies()) == 0 {
-		fmt.Println("No packages installed. Please run 'gp install' to set up dependencies first.")
+		fmt.Println("No packages installed. Please run 'gpack install' to set up dependencies first.")
 		return
 	}
 

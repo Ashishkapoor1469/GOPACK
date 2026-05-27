@@ -20,17 +20,17 @@ Anyone can install GoPack instantly using one of the following commands:
 
 ### For Go Users (Cross-Platform)
 ```bash
-go install github.com/hp/goPack@latest
+go install github.com/Ashishkapoor1469/GOPACK@latest
 ```
 
 ### For Windows (PowerShell)
 ```powershell
-irm https://raw.githubusercontent.com/hp/goPack/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Ashishkapoor1469/GOPACK/main/install.ps1 | iex
 ```
 
 ### For macOS / Linux (Bash)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/hp/goPack/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/Ashishkapoor1469/GOPACK/main/install.sh | sh
 ```
 
 ---
@@ -39,25 +39,25 @@ curl -fsSL https://raw.githubusercontent.com/hp/goPack/main/install.sh | sh
 
 | Command | Description |
 | :--- | :--- |
-| `gp` | Launches the interactive TUI search and selection menu |
-| `gp /` | Launches the TUI with the search bar focused instantly |
-| `gp <pkg> [pkg2]` | Installs package(s) directly, bypassing the TUI |
-| `gp install <pkg>` | Installs latest stable package |
-| `gp remove <pkg>` | Uninstalls package and updates gopack.json/gopack.lock |
-| `gp list` | Lists all installed dependencies with their security status |
-| `gp audit` | Runs vulnerability scan and shows risk summaries |
-| `gp audit --sync-db` | Downloads OSV DB snapshot to local SQLite for offline audits |
-| `gp graph` | Visualizes the dependency tree with circularity indicators |
-| `gp health` | Shows full project health dashboard (licenses, updates, security) |
-| `gp licenses` | Inspects license compliance against allowed/denied lists |
-| `gp run <script>` | Runs a custom script defined in gopack.json |
-| `gp config list` | Lists all configurations inside ~/.gopack/config.toml |
+| `gpack` | Launches the interactive TUI search and selection menu |
+| `gpack /` | Launches the TUI with the search bar focused instantly |
+| `gpack <pkg> [pkg2]` | Installs package(s) directly, bypassing the TUI |
+| `gpack install <pkg>` | Installs latest stable package |
+| `gpack remove <pkg>` | Uninstalls package and updates gopack.json/gopack.lock |
+| `gpack list` | Lists all installed dependencies with their security status |
+| `gpack audit` | Runs vulnerability scan and shows risk summaries |
+| `gpack audit --sync-db` | Downloads OSV DB snapshot to local SQLite for offline audits |
+| `gpack graph` | Visualizes the dependency tree with circularity indicators |
+| `gpack health` | Shows full project health dashboard (licenses, updates, security) |
+| `gpack licenses` | Inspects license compliance against allowed/denied lists |
+| `gpack run <script>` | Runs a custom script defined in gopack.json |
+| `gpack config list` | Lists all configurations inside ~/.gopack/config.toml |
 
 ---
 
 ## 🎨 Interactive Terminal UI (TUI)
 
-If you run `gp` without any arguments, it opens a Bubble Tea interactive TUI containing:
+If you run `gpack` without any arguments, it opens a Bubble Tea interactive TUI containing:
 1. **Side-by-side search panels** for `[FRAMEWORK]` and `[PACKAGES]`.
 2. **Keyboard-driven navigation** (`↑`/`↓` to navigate, `←`/`→` to switch tabs).
 3. **Space Selection**: Tag multiple packages and press `Enter` to install them concurrently.
@@ -70,7 +70,7 @@ If you run `gp` without any arguments, it opens a Bubble Tea interactive TUI con
 ### 1. Scaffold a New Project
 Create a boilerplate template for your favorite framework (e.g. React):
 ```bash
-gp create react
+gpack create react
 ```
 This prompts you for TypeScript, CSS framework, and Git initialization, setting up a template directories list and `gopack.json`.
 
@@ -78,43 +78,43 @@ This prompts you for TypeScript, CSS framework, and Git initialization, setting 
 Install packages directly from the command-line interface:
 ```bash
 # Install a single package
-gp install chalk
+gpack install chalk
 
 # Install multiple packages concurrently
-gp lodash express axios
+gpack lodash express axios
 ```
 GoPack resolves nested dependency trees, pulls package assets in parallel using Go routines, caches files inside `~/.gopack/store/`, and creates `gopack.lock`.
 
 ### 3. Manage Package Manifests
 View all installed packages along with their security badges:
 ```bash
-gp list
+gpack list
 ```
 See the full dependency tree, noting duplicate versions or circularities:
 ```bash
-gp graph
+gpack graph
 ```
 
 ### 4. Run Custom Scripts
 Execute custom scripts defined in `gopack.json` (runs pre and post hooks automatically):
 ```bash
-gp run dev
+gpack run dev
 ```
 
 ### 5. Check Project Security & Health
 Run audits on dependencies to check for known CVE advisories:
 ```bash
-gp audit
+gpack audit
 ```
 Sync vulnerability database definitions for offline security scans:
 ```bash
-gp audit --sync-db
+gpack audit --sync-db
 ```
 View the visual overall project dashboard score:
 ```bash
-gp health
+gpack health
 ```
 Check if all installed packages adhere to your licensing policies:
 ```bash
-gp licenses --check strict
+gpack licenses --check strict
 ```

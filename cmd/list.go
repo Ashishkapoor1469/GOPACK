@@ -35,7 +35,7 @@ var listCmd = &cobra.Command{
 
 		deps := mgr.Dependencies()
 		if len(deps) == 0 {
-			fmt.Println("No package dependencies found in lockfile. Run 'gp install' first.")
+			fmt.Println("No package dependencies found in lockfile. Run 'gpack install' first.")
 			return
 		}
 

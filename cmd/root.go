@@ -20,14 +20,14 @@ var (
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "gp",
+	Use:   "gpack",
 	Short: "GoPack is a high-performance CLI package manager.",
 	Long:  `A production-grade package manager for JS/TS packages and full-stack frameworks written in Go.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// If there are arguments and they were not captured by subcommands,
 		// launch TUI or print usage. (Normally rewritten by Execute() to direct install).
 		if len(args) > 0 {
-			// If we got here, it's either gp / or unknown.
+			// If we got here, it's either gpack / or unknown.
 			if args[0] == "/" {
 				runTUI(true)
 				return

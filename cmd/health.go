@@ -39,7 +39,7 @@ var healthCmd = &cobra.Command{
 		allDeps := mgr.Dependencies()
 
 		if len(allDeps) == 0 {
-			fmt.Println("No packages installed. Please run 'gp install' to set up dependencies first.")
+			fmt.Println("No packages installed. Please run 'gpack install' to set up dependencies first.")
 			return
 		}
 
@@ -101,16 +101,16 @@ var healthCmd = &cobra.Command{
 		fmt.Println("│                                                         │")
 		fmt.Println("│  Actionable Suggestions:                                │")
 		if criticalCount > 0 {
-			fmt.Println("│   - ✗ run 'gp audit' to view critical CVE details.      │")
+			fmt.Println("│   - ✗ run 'gpack audit' to view critical CVE details.    │")
 		}
 		if licFailCount > 0 {
-			fmt.Println("│   - ✗ run 'gp licenses' to find denied licenses.        │")
+			fmt.Println("│   - ✗ run 'gpack licenses' to find denied licenses.      │")
 		}
 		if freshness < 100 {
-			fmt.Println("│   - ⚠ run 'gp outdated' to view package updates.       │")
+			fmt.Println("│   - ⚠ run 'gpack outdated' to view package updates.     │")
 		}
 		if len(allDeps) > 10 {
-			fmt.Println("│   - ℹ run 'gp dedupe' to collapse duplicated package.   │")
+			fmt.Println("│   - ℹ run 'gpack dedupe' to collapse duplicated package. │")
 		}
 		if criticalCount == 0 && licFailCount == 0 && freshness >= 90 {
 			fmt.Println("│   - ✓ Your project is in excellent health!             │")
