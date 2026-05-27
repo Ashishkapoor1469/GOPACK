@@ -26,6 +26,9 @@ if (-not (Test-Path $goBin)) {
 
 # Copy binary to go bin
 $targetPath = Join-Path $goBin "gp.exe"
+if (Test-Path $targetPath) {
+    Remove-Item $targetPath -Force
+}
 Move-Item -Path "gp.exe" -Destination $targetPath -Force
 
 Write-Host "Installed gp.exe to $targetPath" -ForegroundColor Green

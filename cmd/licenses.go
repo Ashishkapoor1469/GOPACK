@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"gopack/pkg/config"
-	"gopack/pkg/installer"
-	"gopack/pkg/licenses"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/config"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/installer"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/licenses"
 
 	"github.com/spf13/cobra"
 )

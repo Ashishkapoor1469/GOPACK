@@ -1,4 +1,4 @@
-module gopack
+module github.com/Ashishkapoor1469/GOPACK
 
 go 1.25.5
 

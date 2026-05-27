@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"gopack/pkg/config"
-	"gopack/pkg/audit"
-	"gopack/pkg/tui"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/config"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/audit"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/tui"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/spf13/cobra"

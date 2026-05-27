@@ -5,10 +5,10 @@ import (
 	"strings"
 	"time"
 
-	"gopack/pkg/config"
-	"gopack/pkg/installer"
-	"gopack/pkg/registry"
-	"gopack/pkg/audit"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/config"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/installer"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/registry"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/audit"
 
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"

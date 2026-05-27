@@ -13,8 +13,8 @@ import (
 	"strings"
 	"sync"
 
-	"gopack/pkg/config"
-	"gopack/pkg/registry"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/config"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/registry"
 )
 
 // PackageManifest represents gopack.json structure

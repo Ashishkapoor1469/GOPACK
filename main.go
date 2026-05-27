@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gopack/cmd"
+	"github.com/Ashishkapoor1469/GOPACK/cmd"
 )
 
 func main() {

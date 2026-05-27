@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"gopack/pkg/config"
+	"github.com/Ashishkapoor1469/GOPACK/pkg/config"
 
 	_ "modernc.org/sqlite"
 )
